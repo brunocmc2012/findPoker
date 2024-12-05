@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Previsão do Pokémon!</title>
+    <title>Previsão do Ás de Espadas</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -39,8 +39,8 @@
     </style>
 </head>
 <body>
-    <h1>Preveja o Pokémon!</h1>
-    <p>Clique no botão para embaralhar e prever a posição do Pokémon!</p>
+    <h1>Prever o Ás de Espadas</h1>
+    <p>Clique no botão para embaralhar e prever a posição do Ás de Espadas!</p>
     <div id="card-area">
         <div class="card-row" id="row-1">
             <div class="card hidden" data-pos="1">?</div>
@@ -55,7 +55,7 @@
     <button id="shuffle-btn">Embaralhar e Prever</button>
     <p id="prediction"></p>
     <script>
-        const cards = ["Pokémon", "Carta 2", "Carta 3", "Carta 4", "Carta 5"];
+        const cards = ["Ás de Espadas", "Carta 2", "Carta 3", "Carta 4", "Carta 5"];
         const cardElements = document.querySelectorAll(".card");
         const predictionElement = document.getElementById("prediction");
 
@@ -70,7 +70,7 @@
             cardElements.forEach((card, index) => {
                 card.textContent = shuffledCards[index];
                 card.classList.remove("hidden");
-                if (shuffledCards[index] === "Pokémon") {
+                if (shuffledCards[index] === "Ás de Espadas") {
                     card.style.borderColor = "red";
                 } else {
                     card.style.borderColor = "black";
@@ -80,7 +80,7 @@
             // Mostra a previsão e a posição real do Ás
             const acePosition = shuffledCards.indexOf("Ás de Espadas") + 1;
             predictionElement.innerHTML = `Previsão: posição ${predictedPosition}. 
-                                           <strong>Pokémon está na posição ${acePosition}.</strong>`;
+                                           <strong>Ás de Espadas está na posição ${acePosition}.</strong>`;
         }
 
         document.getElementById("shuffle-btn").addEventListener("click", shuffleAndPredict);
