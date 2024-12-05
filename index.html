@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Previsão do Pokémon!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        .card-row {
+            display: flex;
+            justify-content: center;
+            margin: 10px 0;
+        }
+        .card {
+            width: 100px;
+            height: 150px;
+            border: 2px solid black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 5px;
+            font-size: 1.2em;
+            background-color: #f4f4f4;
+        }
+        .hidden {
+            background-color: #ddd;
+            color: transparent;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Preveja o Pokémon!</h1>
+    <p>Clique no botão para embaralhar e prever a posição do Pokémon!</p>
+    <div id="card-area">
+        <div class="card-row" id="row-1">
+            <div class="card hidden" data-pos="1">?</div>
+            <div class="card hidden" data-pos="2">?</div>
+            <div class="card hidden" data-pos="3">?</div>
+        </div>
+        <div class="card-row" id="row-2">
+            <div class="card hidden" data-pos="4">?</div>
+            <div class="card hidden" data-pos="5">?</div>
+        </div>
+    </div>
+    <button id="shuffle-btn">Embaralhar e Prever</button>
+    <p id="prediction"></p>
+    <script>
+        const cards = ["Pokémon", "Carta 2", "Carta 3", "Carta 4", "Carta 5"];
+        const cardElements = document.querySelectorAll(".card");
+        const predictionElement = document.getElementById("prediction");
+
+        function shuffleAndPredict() {
+            // Embaralha as cartas
+            const shuffledCards = [...cards].sort(() => Math.random() - 0.5);
+
+            // Define uma previsão aleatória
+            const predictedPosition = Math.floor(Math.random() * 5) + 1;
+
+            // Atualiza a exibição
+            cardElements.forEach((card, index) => {
+                card.textContent = shuffledCards[index];
+                card.classList.remove("hidden");
+                if (shuffledCards[index] === "Pokémon") {
+                    card.style.borderColor = "red";
+                } else {
+                    card.style.borderColor = "black";
+                }
+            });
+
+            // Mostra a previsão e a posição real do Ás
+            const acePosition = shuffledCards.indexOf("Ás de Espadas") + 1;
+            predictionElement.innerHTML = `Previsão: posição ${predictedPosition}. 
+                                           <strong>Pokémon está na posição ${acePosition}.</strong>`;
+        }
+
+        document.getElementById("shuffle-btn").addEventListener("click", shuffleAndPredict);
+    </script>
+</body>
+</html>
