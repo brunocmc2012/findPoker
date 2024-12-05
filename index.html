@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Previs„o do PokÈmon!</title>
+    <title>Previs√£o do Pok√©mon!</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -39,8 +39,8 @@
     </style>
 </head>
 <body>
-    <h1>Preveja o PokÈmon!</h1>
-    <p>Clique no bot„o para embaralhar e prever a posiÁ„o do PokÈmon!</p>
+    <h1>Preveja o Pok√©mon!</h1>
+    <p>Clique no bot√£o para embaralhar e prever a posi√ß√£o do Pok√©mon!</p>
     <div id="card-area">
         <div class="card-row" id="row-1">
             <div class="card hidden" data-pos="1">?</div>
@@ -55,7 +55,7 @@
     <button id="shuffle-btn">Embaralhar e Prever</button>
     <p id="prediction"></p>
     <script>
-        const cards = ["PokÈmon", "Carta 2", "Carta 3", "Carta 4", "Carta 5"];
+        const cards = ["Pok√©mon", "Carta 2", "Carta 3", "Carta 4", "Carta 5"];
         const cardElements = document.querySelectorAll(".card");
         const predictionElement = document.getElementById("prediction");
 
@@ -63,24 +63,24 @@
             // Embaralha as cartas
             const shuffledCards = [...cards].sort(() => Math.random() - 0.5);
 
-            // Define uma previs„o aleatÛria
+            // Define uma previs√£o aleat√≥ria
             const predictedPosition = Math.floor(Math.random() * 5) + 1;
 
-            // Atualiza a exibiÁ„o
+            // Atualiza a exibi√ß√£o
             cardElements.forEach((card, index) => {
                 card.textContent = shuffledCards[index];
                 card.classList.remove("hidden");
-                if (shuffledCards[index] === "PokÈmon") {
+                if (shuffledCards[index] === "Pok√©mon") {
                     card.style.borderColor = "red";
                 } else {
                     card.style.borderColor = "black";
                 }
             });
 
-            // Mostra a previs„o e a posiÁ„o real do ¡s
-            const acePosition = shuffledCards.indexOf("¡s de Espadas") + 1;
-            predictionElement.innerHTML = `Previs„o: posiÁ„o ${predictedPosition}. 
-                                           <strong>PokÈmon est· na posiÁ„o ${acePosition}.</strong>`;
+            // Mostra a previs√£o e a posi√ß√£o real do √Ås
+            const acePosition = shuffledCards.indexOf("√Ås de Espadas") + 1;
+            predictionElement.innerHTML = `Previs√£o: posi√ß√£o ${predictedPosition}. 
+                                           <strong>Pok√©mon est√° na posi√ß√£o ${acePosition}.</strong>`;
         }
 
         document.getElementById("shuffle-btn").addEventListener("click", shuffleAndPredict);
